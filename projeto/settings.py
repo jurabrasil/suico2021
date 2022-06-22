@@ -83,20 +83,20 @@ WSGI_APPLICATION = 'projeto.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'amador',
-        'USER': 'juraci',
-        'PASSWORD': 'aabjp142',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-
 # DATABASES = {
-#     'default': dj_database_url_confg()
-# }
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'amador',
+#        'USER': 'juraci',
+#        'PASSWORD': 'aabjp142',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#    }
+#}
+
+DATABASES = {
+    'default': dj_database_url_confg()
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -183,4 +183,4 @@ DJANGO_ICONS = {
 }
 
 LOGOUT_REDIRECT_URL = 'index'
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
