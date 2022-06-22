@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garça Amador</title>
+    <link rel="stylesheet" href="{%  static 'css/menu.css' %}">
+    <link rel="shortcut icon" href="{%  static 'img/jp.ico' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand corlinha" href="#">Garça Amador</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        
+                        <a class="btn btn-outline-info isDisabled" href="{% url 'lista'%}" role="button">Jogos</a>
+                        <a class="btn btn-outline-info" href="{% url 'index'%}">Classificação</a>
+                        <button class="btn btn-outline-info" href="#" disabled  >Suiço Master</button>
+                        <button class="btn btn-outline-info" href="#" disabled>Suiço Livro</button>
+                        <button class="btn btn-outline-info" href="#" disabled>Municipal</button>
+                        <button class="btn btn-outline-info" href="#" disabled>Areião Araceli</button>
+                    </li>
+
+                </ul>
+                <form class="d-flex justify-content-between">
+                    {% comment %} <button class="btn btn-outline-success" >2021</button> {% endcomment %}
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="logo">
+        {% include 'partials/_logo.html' %}
+    </div>
+    <div class='container'>
+        <div class"row">
+            <div class="alinhamento row justify-content-md-around">
+                <img src="{% static 'img/innov.png' %}" class="col-2" alt="juraInnov perfumes">
+                <img src="{% static 'img/euroblack.png' %}" class="col-2" alt="euroblack perfumes">
+                <img src="{% static 'img/tp.jpg' %}" class="col-2" alt="Teixeira Pinto Quimica">
+            </div>
+            <hr>
+        </div>
+    </div>

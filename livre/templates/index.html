@@ -1,0 +1,87 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% include 'partials\_menu.html' %}
+<div class="row justify-content-beetwen">
+    <div class="col-lg-8 col-md-8 col-sm-4">
+<center>
+        {% include 'class.html' %}
+</center>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        {% include 'rodadas_index.html' %}
+    </div>
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Rodadas', 'Gols', {role: 'annotation'}],
+          {% for r in gols %}
+            [{{r.rodada}}+'º',{{r.gols_total__sum}},{{r.gols_total__sum}} ],
+          {% endfor %}
+        ]);
+
+        var options = {
+          title: 'Gráfico de Gols por Rodada',
+          subtitle: 'Desempenho por rodada',
+          legenda: 'top',
+          is3D: true,
+          vAxis: {minValue: 0,
+                  gridlines: {color: 'transparent'}
+                },
+          annotations: 
+          {
+            alwaysOutside: true
+          },
+          hAxis: {minValue: 1},
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('grafico-gols'));
+
+        chart.draw(data, options);
+
+
+      {% comment %} *************   grafico de gols pro ********* {% endcomment %}
+        
+        var data = google.visualization.arrayToDataTable([
+          [{label: 'Time', type: "string"}, {label: 'Gols', type: "number"}, {role: 'annotation'}],
+          
+          {% for gp in gps %}
+            ["{{gp.time}}", {{gp.gp}}, {{gp.gp}} ],
+          {% endfor %}
+        ]);
+
+        var options = {
+          
+          title: 'Gráfico Melhor Ataque',
+          subtitle: 'Desempenho por rodada',
+          legenda: 'top',
+          is3D: true,
+          colors: ['#e0440e', '#f6c7b6'],
+          vAxis: {minValue: 0,
+                  gridlines: {color: 'transparent'}
+                },
+          annotations: 
+          {
+            alwaysOutside: true,
+          },
+          hAxis: {minValue: 1},
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('graficoGolsPro'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+<div id="grafico-gols"></div>
+<div id="graficoGolsPro"></div>
+
+
+{% include 'partials\_footer.html' %}
+

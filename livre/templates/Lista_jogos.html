@@ -1,0 +1,31 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load mathfilters %}
+
+{% include 'partials\_menu.html' %}
+
+{% include 'partials\_alertas.html' %}
+<center>
+<table class="lista_jogos table-hover table-sm table-responsive">
+
+{% for jogo in jogos %}
+    {% if forloop.counter0|mod:7 == 0 %}
+            <th colspan="5" width="10%">{{jogo.rodada}}º Rodada</th>
+    {% endif %}
+    <tbody>
+        <tr>
+            <td width="1%" scope="row">{{jogo.timea}}</td>
+            <td width="1%"" class='text-center' >{{jogo.placara}}</td>
+            <td width="2%" class='text-center'>x</td>
+            <td width="1%" class='text-center'>{{jogo.placarb}}</td>
+            <td width="1%" >{{jogo.timeb}}</td>
+        </tr>
+        
+        </tbody>
+        {% endfor%}
+    </table>
+</center>
+
+
+{% include 'partials\_footer.html' %}

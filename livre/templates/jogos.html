@@ -1,0 +1,43 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% include 'partials\_menu.html' %}
+
+{% include 'partials\_alertas.html' %}
+
+<form class="container row justify-content-center" action="{% url 'jogos' %}" method="POST" >
+    {% csrf_token %}
+    <div class="row justify-content-center">
+    <div class="col-md-2">
+        <label for="inputState" class="form-label">Rodada</label>
+        <input type="number" name='rodada' value='{{ rodada }}' min='0' class="form-control" requered placeholder="Rodada">
+    </div>
+    <div class="col-md-4">
+        
+        <label for="inputState" class="form-label">Time "CASA"</label>
+        <select id="inputState" class="form-select" name="timecasa" value='Dinos'>
+        <option>{{timea}}</option>
+        {% for time in times %}
+            <option>{{time}}</option>
+        {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label for="inputState" class="form-label">Time "FORA"</label>
+        <select id="inputState" class="form-select" name="timefora" value='{{ timeb }}'>
+        <option selected>{{timeb}}</option>
+        {% for time in times %}
+            <option>{{time}}</option>
+        {% endfor %}
+        </select>
+    </div>
+    <div class="col-2">
+        <br>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+    </div>
+</form>
+
+
+{% include 'partials\_footer.html' %}

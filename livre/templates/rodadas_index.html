@@ -1,0 +1,117 @@
+{% load icons %}
+<center>
+    <div class="container row justify-content-center align-items-center bg-info">
+        <div class="col-auto voltar">
+            {% icon 'chevron-left' %}
+        </div>
+
+        <div class="col-auto">
+            <select class="form" id="exampleFormControlSelect1">
+                {% for x in rod %}
+                <option value={{ forloop.counter }}>{{x}}ª</option>
+                {% endfor %}
+            </select>
+            Rodada
+        </div>
+
+        <div class="col-auto proximo">
+            {% icon 'chevron-right' %}
+        </div>
+    </div>
+</center>
+<!-- mostrando so jogos -->
+<form autocomplete="off">
+    {% for j in jogos %}
+    <div class="container jg jg{{j.rodada}} px-2 pt-2 border border-info">
+        {% if j.placara == None %}
+        <span>
+        <div class='row' id='testedic'>
+                <div class="col-8 timea" id={{j.unicode_timea}}>
+                    <h5 id='timea'>{{ j.timea }}</h5>
+                </div>
+                <div class="col-2 ">
+                    <input id='placara' type="text" name='placara' class="inp-lenght placara text-center" value=""></input>
+                </div>
+        </div>
+        <div class='row'>
+            <div class="col-8 timeb" id={{j.unicode_timeb}}>
+                <h5>{{ j.timeb }}</h5>
+            </div>
+            <div class="col-2 ">
+                <input type="text" name='placarb' class="inp-lenght text-center placarb" value="">
+            </div>
+        </div>
+    </span>
+        {% else %}
+        <div class="row">
+            <div class="col-8">
+                <h5>{{ j.timea }}</h5>
+            </div>
+            <div class="col-2">
+                <h5>{{ j.placara }}</h5>
+            </div>
+            <div class="col-8">
+                <h5>{{ j.timeb }}</h5>
+            </div>
+            <div class="col-2">
+                <h5>{{ j.placarb }}</h5>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class='linha jg jg{{j.rodada}}'><br></div>
+
+    {% endfor %}
+</form>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous">
+</script>
+<script>
+    soma = 0
+    monta_rodada(soma)
+    $(document).ready(() => {
+        $('.voltar').click(() => {
+            soma = -1
+            monta_rodada(soma)
+        })
+        $('.proximo').click(() => {
+            soma = 1
+            monta_rodada(soma)
+        })
+        $('#exampleFormControlSelect1').change(() => {
+            soma = 0
+            monta_rodada(soma)
+        })
+    })
+
+    function monta_rodada(soma) {
+        atual = $('#exampleFormControlSelect1').val()
+        proximo = parseInt(atual) + soma
+        mostra_rodada(atual, proximo)
+    }
+
+    function mostra_rodada(atual, proximo) {
+        if (proximo == 0 || proximo == 14) {
+        }
+        else {
+            $('#exampleFormControlSelect1').val(proximo)
+            classAtual = 'jg' + proximo
+            todos_jogos = $('.jg')
+
+            for (let j = 0; j < todos_jogos.length; j = j + 1) {
+
+                if ($(todos_jogos[j]).hasClass(classAtual)) {
+                    $(todos_jogos[j]).removeClass('d-none')
+                }
+                else {
+                    $(todos_jogos[j]).addClass('d-none')
+                }
+            }
+        }
+    }
+
+</script>

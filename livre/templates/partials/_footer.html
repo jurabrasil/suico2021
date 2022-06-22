@@ -1,0 +1,25 @@
+{% load static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+<script src="{% static 'js/simulacao.js' %}"></script>
+    <script>
+
+        gsap.to("#bola_rosa", 3, {
+            autoRound: true, rotation: -70, scale: 0.05, delay: 3, opacity: 0.5,
+            x: -100, y: -120, z: 0,
+            yoyo: true,
+            repeat: 5
+        })
+
+        gsap.to("#image170", 3, {
+            delay: 2,
+            scale: 0.95,
+            rotation: 15,
+            ease: Linear.easeOut,
+            yoyo: true,
+            repeat: -1
+        })
+
+    </script>
+
+    </body>
+</html>

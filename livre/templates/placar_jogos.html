@@ -1,0 +1,75 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% include 'partials\_menu.html' %}
+{% include 'partials\_alertas.html' %}
+
+{% for jogo in jogos %}
+
+    {% if jogo.placara == None%}
+
+    <form action=" {% url 'placar_jogos' %}" method="POST">
+        {% csrf_token %}
+        <div class="row form-group container">
+            <div class="col-2"><div class="col-auto">
+                <input type="hidden" name='id' value='{{ jogo.pk }}'>
+                <label for="inputState" class="sr-only">Rodada</label>
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Rodada</div>
+                    </div>
+                    <input type="number" name='rodada' value='{{ jogo.rodada }}' min='0' class="form-control" requered
+                        placeholder="Rodada">
+                </div>
+            </div></div>
+            <div class="col-3"><div class="col-auto">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                    </div>
+                        {{jogo.timea}}
+                    </input>
+                </div>
+            </div></div>
+            <div class="col-2"><div class="col-auto">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                    </div>
+                    {% if jogo.placara == None %}
+                    <input type="text" name='placara' class="form-control" value=""></input>
+                    {% else %}
+                    <input type="text" name='placara' class="form-control" name='placara' value={{jogo.placara}}></input>
+                    {% endif %}
+                </div>
+            </div></div>
+            <div class="col-auto">x</div>
+            <div class="col-1"><div class="col-auto">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                    </div>
+                    {% if jogo.placarb == None %}
+                    <input type="text" name='placarb' class="form-control" value=""></input>
+                    {% else %}
+                    <input type="text" name='placarb' class="form-control" value={{jogo.placarb}}></input>
+                    {% endif %}
+                </div>
+            </div></div>
+            <div class="col-3"><div class="col-auto">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                    </div>
+                    {{jogo.timeb}}
+                </div>
+            </div></div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+        </form>
+    {% endif %}
+
+{% endfor %}
+
+
+{% include 'partials\_footer.html' %}
+

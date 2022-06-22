@@ -1,0 +1,50 @@
+<div class="container"><table class="table border border-info">
+    <thead>
+      <tr  class="bg-dark text-light">
+        <th class="center" scope="col"></th>
+        <th class="center" scope="col">Time</th>
+        <th class="center" scope="col">PG</th>
+        <th class="center" scope="col">J</th>
+        <th class="center" scope="col">V</th>
+        <th class="center" scope="col">E</th>
+        <th class="center" scope="col">D</th>
+        <th class="center" scope="col">GP</th>
+        <th class="center" scope="col">GC</th>
+        <th class="center" scope="col">SG</th>
+      </tr>
+    </thead>
+    <tbody class='ord'>
+
+  {% for pos in posicoes %}
+		{% if forloop.counter < 9 %}		
+	     <tr  id={{pos.timeUnicode}} class="primeiros8">
+    {% else %}
+         <tr  id={{pos.timeUnicode}}>
+    {% endif %}
+        <th scope="row">{{ forloop.counter }}</th>
+        <td class="center">{{pos.time}}</th>
+        <td class="center">{{pos.pg}}</td>
+        <td class="center">{{pos.j}}</td>
+        <td class="center">{{pos.v}}</td>
+        <td class="center">{{pos.e}}</td>
+        <td class="center">{{pos.d}}</td>
+        <td class="center">{{pos.gp}}</td>
+        <td class="center">{{pos.gc}}</td>
+        <td class="center">{{pos.sg}}</td>
+     </tr>
+        {% endfor %}
+        
+    </tbody>
+  </table>
+
+
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script>
+    var p = 0
+    $(".primeiros8").css("backgroundColor", "E0FFFF")
+</script>

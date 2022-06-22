@@ -1,0 +1,81 @@
+html{
+    overflow-x: hidden;
+}
+.alinhamento:nth-child(n){
+    max-height: 200px;
+}
+
+* {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+}
+
+.linha {
+    line-height: 65%; content: " ";
+    
+}
+
+body {
+    padding:0;
+    margin:0;
+
+}
+
+.div_sem_enter {
+    margin-top: -10p;
+    display: inline-block;
+    padding:0;
+    margin:0;
+}
+
+.logo {
+    width: 8%;
+    height: 100px;
+    position: fixed;
+    float: left;
+    top: 0;
+    margin-top: 40px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.inp-lenght{
+    width: 20px;
+    height: 20px;
+    color: black;
+    border: none;
+    border-bottom: 1px solid;
+    margin: 0;
+    padding: 0;
+}
+
+.inp-lenght:focus{
+    box-shadow: 0 0 0 0 ;
+    outline: 0;
+}
+
+
+.lista_jogos{
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.lista_jogos th {
+    background-color: rgb(133, 201, 238);
+    text-align: center;
+
+    border: 1px solid black;
+}
+
+
+
+/* **** animações  */
+#ani{
+
+    background-color: aliceblue;
+    left: 50%;
+    top: 50%;
+    position: fixed;
+}
